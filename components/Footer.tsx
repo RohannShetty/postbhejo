@@ -16,23 +16,22 @@ const Footer: React.FC = () => (
           <li>Email: hello@postbhejo.com</li>
           <li>WhatsApp: +91 91000 00000</li>
           <li>Instagram: @yourbrand</li>
-          <li>Mumbai, Maharashtra</li>
+          <li>Address: Mumbai, Maharashtra</li>
         </ul>
       </div>
 
       <div>
-        <h4 className="text-sm font-semibold uppercase tracking-wide text-white">Policies</h4>
+        <h4 className="text-sm font-semibold uppercase tracking-wide text-white">Footer + Policies</h4>
         <ul className="mt-3 space-y-2 text-sm">
           <li>Shipping Policy</li>
           <li>Returns & Refunds</li>
           <li>Privacy Policy</li>
           <li>Terms & Conditions</li>
+          <li>Social: Instagram | WhatsApp</li>
         </ul>
       </div>
     </div>
-    <div className="border-t border-gray-700 py-4 text-center text-xs text-gray-400">
-      © {new Date().getFullYear()} PostBhejo Umbrellas. All rights reserved.
-    </div>
+    <div className="border-t border-gray-700 py-4 text-center text-xs text-gray-400">© {new Date().getFullYear()} PostBhejo Umbrellas. All rights reserved.</div>
   </footer>
 );
 

@@ -15,9 +15,9 @@ const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="text-2xl font-bold tracking-tight">
+        <Link to="/" className="text-xl font-extrabold tracking-tight sm:text-2xl">
           Post<span className="text-[#0f766e]">Bhejo</span>
         </Link>
 
@@ -37,18 +37,14 @@ const Header: React.FC = () => {
           ))}
         </nav>
 
-        <button
-          onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="rounded-md p-2 text-gray-700 hover:bg-gray-100 md:hidden"
-          aria-label="Toggle navigation"
-        >
+        <button className="rounded-md p-2 text-gray-700 md:hidden" onClick={() => setIsMenuOpen((s) => !s)} aria-label="Open Menu">
           {isMenuOpen ? <XIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
         </button>
       </div>
 
       {isMenuOpen && (
         <div className="border-t border-gray-200 bg-white px-4 py-3 md:hidden">
-          <div className="flex flex-col gap-2">
+          <div className="grid gap-2">
             {navLinks.map((link) => (
               <NavLink
                 key={link.name}
