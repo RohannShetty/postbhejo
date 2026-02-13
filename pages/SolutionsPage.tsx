@@ -1,101 +1,42 @@
-
 import React from 'react';
-import Section from '../components/Section';
-import { CheckCircleIcon } from '../components/Icons';
+import { Link } from 'react-router-dom';
 
-const ServiceCard: React.FC<{ title: string, description: string, children?: React.ReactNode }> = ({ title, description, children }) => (
-    <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-        <h3 className="text-2xl font-bold text-[#D32F2F] mb-3">{title}</h3>
-        <p className="text-gray-600 mb-4">{description}</p>
-        {children}
+const products = [
+  ['AER Jet Black Umbrella', '₹1,499', '30″ premium', 'Minimal'],
+  ['ARC Olive Umbrella', '₹1,699', '32″ oversized', 'Oversized'],
+  ['LUME Ivory Umbrella', '₹1,399', '29″ premium', 'New'],
+  ['CORP Graphite Umbrella', '₹1,899', '31″ corporate', 'Corporate'],
+  ['DASH Red Umbrella', '₹1,299', '28″ statement', 'Statement'],
+  ['NOVA Navy Umbrella', '₹1,449', '30″ minimal', 'Minimal'],
+];
+
+const whatsapp = 'https://wa.me/919100000000?text=Hey!%20I%20want%20to%20order%20[Product%20Name]%20in%20[Color]%20%E2%80%94%20send%20price%20%26%20delivery%20time.';
+
+const SolutionsPage: React.FC = () => (
+  <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <h1 className="text-4xl font-extrabold">Shop</h1>
+    <div className="mt-4 flex flex-wrap gap-2 text-sm">
+      {['All', 'Minimal', 'Statement', 'Corporate', 'Oversized', 'New'].map((filter) => (
+        <span key={filter} className="rounded-full border px-4 py-1">{filter}</span>
+      ))}
     </div>
+
+    <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      {products.map(([name, price, desc, tag]) => (
+        <article key={name} className="rounded-xl border bg-white p-4 shadow-sm">
+          <div className="h-44 rounded-lg bg-gray-100" />
+          <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-gray-500">{tag}</p>
+          <h2 className="font-semibold">{name}</h2>
+          <p className="text-sm text-gray-500">{desc}</p>
+          <p className="mt-2 font-bold">{price}</p>
+          <div className="mt-4 flex gap-2">
+            <Link to="/product" className="rounded-full bg-[#0f766e] px-4 py-2 text-sm font-semibold text-white">Buy Now</Link>
+            <a href={whatsapp} target="_blank" rel="noreferrer" className="rounded-full border border-green-500 px-4 py-2 text-sm font-semibold text-green-600">WhatsApp</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
 );
-
-const SolutionsPage: React.FC = () => {
-  return (
-    <div>
-      <Section className="bg-gray-50 text-center">
-        <h1 className="text-4xl font-extrabold text-[#4F4A45]">Our Solutions</h1>
-        <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">A comprehensive suite of services to power your offline campaigns, from hyperlocal to national.</p>
-      </Section>
-
-      <Section>
-        <h2 className="text-3xl font-bold text-center mb-12">Core Services</h2>
-        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
-          <ServiceCard
-            title="Direct Post Distribution"
-            description="Leverage India Post's 'Direct Post' service for unaddressed delivery of your marketing materials at an unparalleled scale and cost-effectiveness. Ideal for mass-market awareness campaigns."
-          >
-            <ul className="space-y-2 text-gray-600">
-                <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-green-500 mr-2" /> Leaflets, Postcards, Brochures</li>
-                <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-green-500 mr-2" /> Hyperlocal to City-wide Targeting</li>
-                <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-green-500 mr-2" /> Highest Reach for BTL Marketing</li>
-            </ul>
-          </ServiceCard>
-          <ServiceCard
-            title="Targeted Bulk Mailers"
-            description="Have your own customer database? We offer confidential handling and distribution for your personalized campaigns, ensuring your message reaches the right people."
-          >
-             <ul className="space-y-2 text-gray-600">
-                <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-green-500 mr-2" /> Secure Data Handling</li>
-                <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-green-500 mr-2" /> Personalized Letters & Offers</li>
-                <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-green-500 mr-2" /> Ideal for Customer Retention</li>
-            </ul>
-          </ServiceCard>
-          <ServiceCard
-            title="Product Sampling"
-            description="Get your product directly into the hands of potential customers. We manage the logistics of distributing sachets and small product samples along with letters or postcards."
-          >
-             <ul className="space-y-2 text-gray-600">
-                <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-green-500 mr-2" /> FMCG Sachets, Small Packs</li>
-                <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-green-500 mr-2" /> Drive Product Trials</li>
-                <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-green-500 mr-2" /> Collect Feedback via QR Codes</li>
-            </ul>
-          </ServiceCard>
-          <ServiceCard
-            title="Festive & Corporate Gifting"
-            description="From Diwali diyas sourced from local artisans to corporate new year gifts, we handle bulk gifting with a personal touch, ensuring timely and impactful delivery."
-          >
-             <ul className="space-y-2 text-gray-600">
-                <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-green-500 mr-2" /> Artisan-sourced Products</li>
-                <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-green-500 mr-2" /> Scalable for Large Corporations</li>
-                <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-green-500 mr-2" /> Social Impact Association</li>
-            </ul>
-          </ServiceCard>
-        </div>
-      </Section>
-
-      <Section className="bg-white">
-        <h2 className="text-3xl font-bold text-center mb-12">Creative Campaign Options & Add-ons</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="p-6 bg-gray-50 rounded-lg">
-                <h4 className="font-bold text-lg">Seed Paper Invites</h4>
-                <p className="text-sm text-gray-600">Eco-friendly invites that can be planted.</p>
-            </div>
-            <div className="p-6 bg-gray-50 rounded-lg">
-                <h4 className="font-bold text-lg">Reflective/Shiny Cards</h4>
-                <p className="text-sm text-gray-600">Premium cards that grab attention.</p>
-            </div>
-            <div className="p-6 bg-gray-50 rounded-lg">
-                <h4 className="font-bold text-lg">Band-Aid Campaigns</h4>
-                <p className="text-sm text-gray-600">A creative way to send a "we care" message.</p>
-            </div>
-            <div className="p-6 bg-gray-50 rounded-lg">
-                <h4 className="font-bold text-lg">Festive Kites & Diyas</h4>
-                <p className="text-sm text-gray-600">Seasonal campaigns that create delight.</p>
-            </div>
-            <div className="p-6 bg-gray-50 rounded-lg">
-                <h4 className="font-bold text-lg">Printing Solutions</h4>
-                <p className="text-sm text-gray-600">High-quality printing for all your materials.</p>
-            </div>
-            <div className="p-6 bg-gray-50 rounded-lg">
-                <h4 className="font-bold text-lg">Tracking & Reporting</h4>
-                <p className="text-sm text-gray-600">QR code tracking for response measurement.</p>
-            </div>
-        </div>
-      </Section>
-    </div>
-  );
-};
 
 export default SolutionsPage;

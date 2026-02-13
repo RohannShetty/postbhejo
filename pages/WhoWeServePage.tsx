@@ -1,93 +1,42 @@
+import React from 'react';
 
-import React, { useState } from 'react';
-import Section from '../components/Section';
+const whatsapp = 'https://wa.me/919100000000?text=Hi%2C%20I%20need%20a%20corporate%20umbrella%20quote%20for%20MOQ%20100.';
 
-type Audience = 'brands' | 'ngos' | 'individuals' | 'investors';
+const WhoWeServePage: React.FC = () => (
+  <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <h1 className="text-4xl font-extrabold">Corporate Umbrella Solutions</h1>
+    <p className="mt-3 max-w-3xl text-lg text-gray-600">Bulk branding, events, teams, HR gifts — MOQ 100.</p>
+    <a href={whatsapp} target="_blank" rel="noreferrer" className="mt-6 inline-block rounded-full bg-[#0f766e] px-6 py-3 font-bold text-white">Get Corporate Quote</a>
 
-const AudienceContent: React.FC<{ audience: Audience }> = ({ audience }) => {
-  const content = {
-    brands: {
-      title: "For Brands (Retail/FMCG)",
-      subtitle: "Focus: ROI & Impact",
-      pitch: "Drive footfall, generate product trials, and build brand love with hyperlocal campaigns that cut through the digital noise. From store opening invites to mass product sampling, we offer tangible results with an unbeatable CPA. Plus, our social impact sourcing adds a powerful CSR angle to your campaigns.",
-      imageUrl: "https://picsum.photos/600/400?random=21",
-      points: ["Hyperlocal Case Studies", "Sampling Feedback Loops", "Festive Gifting at Scale", "Social Impact Association"]
-    },
-    ngos: {
-      title: "For NGOs & Artisan Groups",
-      subtitle: "Focus: Sustainable Income & Reach",
-      pitch: "We provide a platform to take your story and craft to a national audience. Through our corporate gifting and D2C channels, we facilitate bulk orders at fair prices, creating sustainable income streams and celebrating India's rich heritage.",
-      imageUrl: "https://picsum.photos/600/400?random=22",
-      points: ["Access to National Markets", "Fair Trade Pricing", "Storytelling Platform", "Recipient Testimonials"]
-    },
-    individuals: {
-      title: "For Individuals & Consumers",
-      subtitle: "Focus: Emotional Impact & Social Good",
-      pitch: "Send a gift that gives back. Our platform allows you to send beautifully crafted, artisan-made gifts for any occasion. Each purchase supports local livelihoods, making your gesture even more meaningful.",
-      imageUrl: "https://picsum.photos/600/400?random=23",
-      points: ["Authentic Craftsmanship", "Support Local Livelihoods", "Unique Gifting Options", "Easy-to-use Platform"]
-    },
-    investors: {
-      title: "For Investors & Leadership",
-      subtitle: "Focus: Market Size & Unit Economics",
-      pitch: "Post Bhejo is uniquely positioned at the intersection of logistics, marketing, and social impact. We leverage India Post's unmatched network (our 'moat') to offer a highly scalable, tech-enabled solution with strong unit economics and a massive Total Addressable Market across retail, FMCG, gifting, and social commerce.",
-      imageUrl: "https://picsum.photos/600/400?random=24",
-      points: ["Large TAM", "Strong Unit Economics", "Scalable Tech Platform", "Unique 'Moat' with India Post"]
-    },
-  };
+    <h2 className="mt-10 text-2xl font-bold">Why Corporate?</h2>
+    <ul className="mt-4 list-disc space-y-2 pl-5">
+      <li>Strengthen employee identity</li>
+      <li>Client gifting</li>
+      <li>Event merchandise</li>
+      <li>Festival swag</li>
+    </ul>
 
-  const current = content[audience];
+    <h2 className="mt-10 text-2xl font-bold">How It Works</h2>
+    <ol className="mt-4 list-decimal space-y-2 pl-5">
+      <li>WhatsApp inquiry</li>
+      <li>Send logo + requirements</li>
+      <li>Get sample & quote</li>
+      <li>Production starts</li>
+    </ol>
 
-  return (
-    <div className="grid md:grid-cols-2 gap-12 items-center">
-      <div className="order-2 md:order-1">
-        <h2 className="text-3xl font-bold">{current.title}</h2>
-        <p className="font-semibold text-[#D32F2F] my-2">{current.subtitle}</p>
-        <p className="text-gray-700 leading-relaxed mb-6">{current.pitch}</p>
-        <ul className="space-y-2">
-            {current.points.map(point => <li key={point} className="flex items-center text-gray-600">✓ <span className="ml-2">{point}</span></li>)}
-        </ul>
+    <div className="mt-10 rounded-2xl border bg-white p-6 shadow-sm">
+      <h3 className="text-xl font-bold">Inquiry Form</h3>
+      <div className="mt-4 grid gap-4 md:grid-cols-2">
+        <input className="rounded-lg border p-3" placeholder="Name" />
+        <input className="rounded-lg border p-3" placeholder="Company" />
+        <input className="rounded-lg border p-3" placeholder="Email" />
+        <input className="rounded-lg border p-3" placeholder="WhatsApp" />
+        <input className="rounded-lg border p-3 md:col-span-2" placeholder="Logo upload (URL)" />
+        <input className="rounded-lg border p-3 md:col-span-2" placeholder="Quantity" />
       </div>
-      <div className="order-1 md:order-2">
-        <img src={current.imageUrl} alt={current.title} className="rounded-lg shadow-xl" />
-      </div>
+      <button className="mt-4 rounded-full bg-[#0f766e] px-5 py-2 font-semibold text-white">Send Inquiry</button>
     </div>
-  );
-};
-
-const WhoWeServePage: React.FC = () => {
-  const [activeAudience, setActiveAudience] = useState<Audience>('brands');
-
-  const audiences: { id: Audience; name: string }[] = [
-    { id: 'brands', name: 'Brands' },
-    { id: 'ngos', name: 'NGOs' },
-    { id: 'individuals', name: 'Individuals' },
-    { id: 'investors', name: 'Investors' },
-  ];
-
-  return (
-    <div>
-      <Section className="bg-gray-50 text-center">
-        <h1 className="text-4xl font-extrabold text-[#4F4A45]">Who We Serve</h1>
-        <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">Tailored solutions for every need, from individual gifts to national campaigns.</p>
-      </Section>
-
-      <Section>
-        <div className="flex justify-center border-b border-gray-200 mb-12">
-            {audiences.map(aud => (
-                <button 
-                    key={aud.id}
-                    onClick={() => setActiveAudience(aud.id)}
-                    className={`px-4 py-2 -mb-px text-lg font-semibold border-b-2 transition-colors duration-300 ${activeAudience === aud.id ? 'border-[#D32F2F] text-[#D32F2F]' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
-                >
-                    {aud.name}
-                </button>
-            ))}
-        </div>
-        <AudienceContent audience={activeAudience} />
-      </Section>
-    </div>
-  );
-};
+  </section>
+);
 
 export default WhoWeServePage;

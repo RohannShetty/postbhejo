@@ -1,10 +1,8 @@
-
-import React, { useState, useEffect } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import React from 'react';
+import { HashRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import StickyCTA from './components/StickyCTA';
-import DiwaliOverlay from './components/DiwaliOverlay';
 
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
@@ -18,41 +16,36 @@ import ContactPage from './pages/ContactPage';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-
-  useEffect(() => {
+  React.useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
   return null;
 };
 
-const App: React.FC = () => {
-  const [isDiwaliTheme, setIsDiwaliTheme] = useState(false);
-
-  return (
-    <HashRouter>
-      <div className={`relative min-h-screen bg-[#FEFCF3] text-[#4F4A45] ${isDiwaliTheme ? 'diwali-theme' : ''}`}>
-        {isDiwaliTheme && <DiwaliOverlay />}
-        <Header isDiwaliTheme={isDiwaliTheme} setIsDiwaliTheme={setIsDiwaliTheme} />
-        <main className="pt-20">
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/solutions" element={<SolutionsPage />} />
-            <Route path="/pricing" element={<PricingPage />} />
-            <Route path="/who-we-serve" element={<WhoWeServePage />} />
-            <Route path="/impact-stories" element={<ImpactStoriesPage />} />
-            <Route path="/resources" element={<ResourcesPage />} />
-            <Route path="/roadmap" element={<RoadmapPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-          </Routes>
-        </main>
-        <StickyCTA />
-        <Footer />
-      </div>
-    </HashRouter>
-  );
-};
+const App: React.FC = () => (
+  <HashRouter>
+    <div className="min-h-screen bg-[#f7f6f4] text-[#1f2937]">
+      <Header />
+      <main className="pt-20">
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/shop" element={<SolutionsPage />} />
+          <Route path="/product" element={<PricingPage />} />
+          <Route path="/corporate" element={<WhoWeServePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/how-it-works" element={<ImpactStoriesPage />} />
+          <Route path="/whatsapp-order" element={<ResourcesPage />} />
+          <Route path="/faq" element={<RoadmapPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </main>
+      <StickyCTA />
+      <Footer />
+    </div>
+  </HashRouter>
+);
 
 export default App;
