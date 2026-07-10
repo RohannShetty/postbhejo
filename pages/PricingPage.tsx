@@ -1,97 +1,53 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Section from '../components/Section';
-import { CheckCircleIcon } from '../components/Icons';
 
-const PricingCard: React.FC<{
-  title: string;
-  price: string;
-  description: string;
-  features: string[];
-  isFeatured?: boolean;
-}> = ({ title, price, description, features, isFeatured = false }) => (
-  <div className={`border rounded-lg p-8 flex flex-col ${isFeatured ? 'border-[#D32F2F] scale-105 bg-white' : 'border-gray-200'}`}>
-    {isFeatured && <span className="bg-[#D32F2F] text-white text-xs font-bold px-3 py-1 rounded-full self-start mb-4">MOST POPULAR</span>}
-    <h3 className="text-2xl font-bold">{title}</h3>
-    <p className="text-gray-500 mt-2">{description}</p>
-    <div className="my-6">
-      <span className="text-4xl font-extrabold">{price}</span>
-      <span className="text-gray-500">/ per unit</span>
+const whatsapp = 'https://wa.me/919100000000?text=Hey!%20I%20want%20to%20order%20AER%20Jet%20Black%20Umbrella%20in%20Black%20%E2%80%94%20send%20price%20%26%20delivery%20time.';
+
+const PricingPage: React.FC = () => (
+  <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="grid gap-8 lg:grid-cols-2">
+      <div>
+        <div className="h-80 rounded-2xl bg-gray-100" />
+        <div className="mt-3 grid grid-cols-4 gap-2">
+          <div className="h-20 rounded-lg bg-gray-200" />
+          <div className="h-20 rounded-lg bg-gray-200" />
+          <div className="h-20 rounded-lg bg-gray-200" />
+          <div className="h-20 rounded-lg bg-gray-200" />
+        </div>
+      </div>
+
+      <div>
+        <h1 className="text-4xl font-extrabold">AER Jet Black Umbrella</h1>
+        <p className="mt-2 text-2xl font-bold">₹1,499</p>
+
+        <div className="mt-5 flex flex-wrap gap-3">
+          <button className="rounded-full bg-[#0f766e] px-6 py-3 font-bold text-white">Buy on Website</button>
+          <button className="rounded-full border border-gray-300 px-6 py-3 font-bold text-gray-800">Add to Cart</button>
+          <a href={whatsapp} target="_blank" rel="noreferrer" className="rounded-full border border-green-500 px-6 py-3 font-bold text-green-600">Order on WhatsApp</a>
+        </div>
+
+        <ul className="mt-8 list-disc space-y-2 pl-5 text-gray-700">
+          <li>Designed for Indian rain & sun</li>
+          <li>Durable fiberglass frame</li>
+          <li>Minimal single-panel print</li>
+          <li>10–15 day delivery</li>
+          <li>Custom options available.</li>
+        </ul>
+
+        <h2 className="mt-8 text-xl font-bold">Benefits</h2>
+        <ul className="mt-2 list-disc space-y-1 pl-5">
+          <li>Built for urban life</li>
+          <li>Lightweight but strong</li>
+          <li>Perfect gift</li>
+        </ul>
+
+        <p className="mt-6 text-sm text-gray-600">Trusted Brand • Secure Checkout • WhatsApp support • Genuine materials</p>
+        <p className="mt-2 text-sm text-gray-600">10–15 day delivery window • Easy returns within 7 days</p>
+
+        <Link to="/corporate" className="mt-6 inline-block rounded-full bg-black px-6 py-3 font-semibold text-white">Customize for Your Brand</Link>
+      </div>
     </div>
-    <ul className="space-y-4 mb-8">
-      {features.map((feature, index) => (
-        <li key={index} className="flex items-start">
-          <CheckCircleIcon className="w-6 h-6 text-green-500 mr-3 flex-shrink-0" />
-          <span>{feature}</span>
-        </li>
-      ))}
-    </ul>
-    <Link to="/contact" className={`mt-auto w-full text-center font-bold py-3 px-6 rounded-lg transition-colors ${isFeatured ? 'bg-[#D32F2F] text-white hover:bg-red-700' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`}>
-      Get Started
-    </Link>
-  </div>
+  </section>
 );
-
-const PricingPage: React.FC = () => {
-  return (
-    <div>
-      <Section className="bg-gray-50 text-center">
-        <h1 className="text-4xl font-extrabold text-[#4F4A45]">Simple, Transparent Pricing</h1>
-        <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">Choose a plan that fits your campaign goals. All prices are indicative and may vary based on volume and complexity.</p>
-      </Section>
-
-      <Section>
-        <div className="grid lg:grid-cols-3 gap-8 items-start">
-          <PricingCard
-            title="Hyperlocal Starter"
-            price="₹2*"
-            description="Perfect for local businesses to test the waters with our free pilot offer."
-            features={[
-              "Up to 1,500 Invites/Leaflets",
-              "Hyperlocal Pincode Targeting",
-              "Standard Paper Quality",
-              "Basic Delivery Reporting"
-            ]}
-          />
-          <PricingCard
-            title="Brand Builder"
-            price="₹5*"
-            description="Ideal for brand awareness and product sampling campaigns at scale."
-            features={[
-              "Minimum 10,000 Units",
-              "Multi-City Targeting",
-              "Product Sample Attachment",
-              "QR Code Tracking & Analytics"
-            ]}
-            isFeatured={true}
-          />
-          <PricingCard
-            title="Enterprise & Gifting"
-            price="Custom"
-            description="Tailor-made solutions for large-scale, creative, and corporate gifting campaigns."
-            features={[
-              "Unlimited Volume",
-              "Custom Creative Formats",
-              "Artisan-Sourced Gifting",
-              "Dedicated Account Manager"
-            ]}
-          />
-        </div>
-        <p className="text-center text-sm text-gray-500 mt-8">*Prices are indicative and exclude printing, logistics, and taxes. Contact us for a detailed quote.</p>
-      </Section>
-      
-      <Section className="bg-white">
-        <div className="text-center bg-[#C4B79A]/20 p-12 rounded-lg">
-          <h2 className="text-3xl font-bold">Need a Custom Quote?</h2>
-          <p className="mt-2 text-gray-700 max-w-2xl mx-auto">Every campaign is unique. Let's discuss your specific needs for volume, creative formats, and targeting to build the perfect plan for you.</p>
-          <Link to="/contact" className="mt-6 inline-block bg-[#D32F2F] text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-red-700 transition-transform hover:scale-105">
-            Request a Custom Quote
-          </Link>
-        </div>
-      </Section>
-    </div>
-  );
-};
 
 export default PricingPage;
